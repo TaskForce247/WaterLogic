@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    class DbUser:IDbCrud<Usern>
+    public class DbUser
 
     {
         private string connectionString;
@@ -83,6 +84,30 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@companyid", entity.Companyid);
                     cmd.ExecuteNonQuery();
                 }
+            }
+        }
+        public Boolean Check(string username,string password)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Users WHERE Username = @username AND Password = @password";
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Connection = conn;
+                    conn.Open();
+
+                    DataSet ds = new DataSet();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(ds);
+                    
+
+                    bool loginSuccessful = ((ds.Tables.Count > 0) && (ds.Tables[0].Rows.Count > 0));
+                    return loginSuccessful;
+                }
+              
             }
         }
     }

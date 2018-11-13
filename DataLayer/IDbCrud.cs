@@ -13,5 +13,6 @@ namespace DataLayer
         T Get(int id);
         void Update(T entity);
         void Delete(int id);
+        
     }
 }
