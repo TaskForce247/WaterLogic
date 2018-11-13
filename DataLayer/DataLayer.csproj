@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbUser.cs" />
     <Compile Include="DbParty.cs" />
     <Compile Include="DbPerson.cs" />
     <Compile Include="IDbCrud.cs" />

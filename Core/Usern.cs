@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    class User
+    public class Usern
     {
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Companyid { get; set; }
     }
 }
