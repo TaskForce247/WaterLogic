@@ -52,7 +52,9 @@ namespace DesktopApp1
         }
         private Boolean checkUser(string username,string password)
         {
+            
             Boolean b;
+          
            b= dbUser.Check(username, password);
             return b;
         }
