@@ -17,6 +17,7 @@ namespace PartyWinClient
         private DbParty dbParty;
         private DbPerson dbPerson;
         private DbUser dbUser;
+
         private string username;
         private string password;
         public Form1()
@@ -62,7 +63,10 @@ namespace PartyWinClient
         {
             username = txtFirstName.Text; password = txtLastName.Text;
             if (checkUser(username, password))
-            { MessageBox.Show("Thanks!"); }
+            {
+               Form2 employees = new Form2();
+                employees.Show();
+            }
         }
 
         private void btnJoinParty_Click(object sender, EventArgs e)
@@ -90,6 +94,11 @@ namespace PartyWinClient
         }
 
         private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
         {
 
         }
